@@ -1,0 +1,12 @@
+[
+  {"origen": "Calculo", "destino": null},
+  {"origen": "Fisica", "destino": null},
+  {"origen": "Quimica", "destino": null},
+  {"origen": "Programacion", "destino": null},
+  {"origen": "Algoritmos", "destino": null},
+  {"origen": "BasesDatos", "destino": null},
+  {"origen": "Redes", "destino": null},
+  {"origen": "Estructuras", "destino": null},
+  {"origen": "Sistemas", "destino": null},
+  {"origen": "InteligenciaArtificial", "destino": null}
+]

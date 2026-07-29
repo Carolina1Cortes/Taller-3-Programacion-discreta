@@ -1,0 +1,18 @@
+[
+  {"origen": "Calculo", "destino": "Fisica"},
+  {"origen": "Fisica", "destino": "Quimica"},
+  {"origen": "Quimica", "destino": "Calculo"},
+  {"origen": "Calculo", "destino": "Programacion"},
+  {"origen": "Fisica", "destino": "Algoritmos"},
+  {"origen": "Quimica", "destino": "BasesDatos"},
+  {"origen": "Programacion", "destino": "Algoritmos"},
+  {"origen": "Programacion", "destino": "BasesDatos"},
+  {"origen": "Algoritmos", "destino": "BasesDatos"},
+  {"origen": "Algoritmos", "destino": "Redes"},
+  {"origen": "BasesDatos", "destino": "Estructuras"},
+  {"origen": "Redes", "destino": "Estructuras"},
+  {"origen": "Redes", "destino": "Sistemas"},
+  {"origen": "Estructuras", "destino": "Sistemas"},
+  {"origen": "Sistemas", "destino": "InteligenciaArtificial"},
+  {"origen": "Redes", "destino": "InteligenciaArtificial"}
+]
