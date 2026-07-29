@@ -1,0 +1,31 @@
+Criptosistema RSA en PythonUn simulador interactivo por consola que implementa las operaciones fundamentales de la criptografía asimétrica RSA, incluyendo la verificación de primalidad, el Algoritmo de Euclides Extendido para la obtención del inverso modular, y las funciones de cifrado y descifrado.1. Descripción GeneralEsta herramienta permite comprender y verificar de manera directa el funcionamiento interno del criptosistema RSA. Ofrece dos modos de uso:Casos Obligatorios: Ejecuta casos de prueba preconfigurados para validar rápidamente los cálculos matemáticos.Modo Libre: Permite ingresar manualmente los valores para los primos $p$ y $q$, el exponente público $e$ y el mensaje numérico $M$.2. Requisitos y LibreríasLenguaje: Python 3.8 o superior.Librerías externas: Ninguna. Se emplean únicamente módulos nativos de la biblioteca estándar de Python:math: Para operaciones de raíz cuadrada entera (isqrt) y cálculo del máximo común divisor (gcd).3. Guía de UsoEjecución del ProgramaAbre una terminal en el directorio donde se encuentra el código y ejecuta:python rsa_simple.py
+Menú Principal=== RSA Taller ===
+1. Casos obligatorios
+2. Modo libre
+0. Salir
+Opción 1: Evalúa los datos predeterminados ($p = 61$, $q = 53$, $e = 17$, $M = 65$).Opción 2: Solicita el ingreso secuencial de:$p$ y $q$: Números enteros primos.$e$: Exponente de cifrado, tal que $\gcd(e, \phi(n)) = 1$.$M$: Mensaje en formato numérico entero ($M < n$).4. Fundamentos Matemáticos: Primos, Inverso Modular y CongruenciaA. El Papel de los Números Primos ($p$ y $q$)Los números primos son la columna vertebral de la seguridad de RSA.Cálculo de la Función Totiente de Euler ($\phi(n)$): Si $n = p \times q$, saber la factorización de $n$ permite calcular trivialmente $\phi(n) = (p - 1)(q - 1)$.Trampa Unidireccional (One-Way Trapdoor Function): Multiplicar dos primos grandes para obtener $n$ es computacionalmente sencillo, pero recuperar $p$ y $q$ a partir de $n$ (factorización de enteros) es un problema extremadamente difícil. Sin la descomposición de $n$ en sus factores primos $p$ y $q$, no se puede determinar $\phi(n)$ ni calcular la clave privada $d$.B. El Papel del Inverso Modular ($d$)El inverso modular genera la "clave secreta" o "desbloqueador" del mensaje.La clave privada $d$ es el inverso multiplicativo del exponente público $e$ módulo $\phi(n)$.Se define matemáticamente por la ecuación:$$d \cdot e \equiv 1 \pmod{\phi(n)}$$Para calcular $d$, se utiliza el Algoritmo de Euclides Extendido, el cual halla los coeficientes de Bézout $(x, y)$ tales que $x \cdot e + y \cdot \phi(n) = \gcd(e, \phi(n)) = 1$. La solución para $x$ (ajustada en el rango positivo) corresponde exactamente al valor de $d$.C. El Papel de la Congruencia ModularLa equivalencia por congruencias aritméticas asegura que la operación de descifrado revierta exactamente la de cifrado.Cifrado: El mensaje $M$ se transforma en el texto cifrado $C$ mediante la congruencia:$$C \equiv M^e \pmod n$$Descifrado: El receptor aplica la clave privada $d$ al texto $C$:$$M_{desc} \equiv C^d \pmod n$$Demostración de consistencia: Sustituyendo $C$ en la fórmula de descifrado se obtiene:$$M_{desc} \equiv (M^e)^d \equiv M^{e \cdot d} \pmod n$$Como $e \cdot d \equiv 1 \pmod{\phi(n)}$, podemos escribir $e \cdot d = k \cdot \phi(n) + 1$ para algún entero $k$. Por el Teorema de Euler ($M^{\phi(n)} \equiv 1 \pmod n$ cuando $\gcd(M, n) = 1$):$$M^{e \cdot d} = M^{k \cdot \phi(n) + 1} = (M^{\phi(n)})^k \cdot M \equiv (1)^k \cdot M \equiv M \pmod n$$Por lo tanto, la congruencia garantiza matemáticamente que $M_{desc} = M$.5. Flujo del Programa [Entrada: p, q, e, M]
+          │
+          ▼
+ [1. Validar Primalidad] ────(p o q no son primos)───► [Error y Fin]
+          │
+          ▼
+ [2. Calcular Módulo y Totiente]
+     • n = p * q
+     • φ(n) = (p - 1) * (q - 1)
+          │
+          ▼
+ [3. Validar Exponente e] ───(gcd(e, φ(n)) ≠ 1)──────► [Error y Fin]
+          │
+          ▼
+ [4. Obteninedo Inverso Modular]
+     • Algoritmo de Euclides Extendido
+     • d ≡ e⁻¹ mod φ(n)
+          │
+          ▼
+ [5. Cifrado y Descifrado mediante Congruencias]
+     • Cifrado:   C = Mᵉ mod n
+     • Descifrado: M' = Cᵈ mod n
+          │
+          ▼
+ [Salida: n, φ(n), d, C, M']
+6. Caso de Prueba IntegradoParámetros de Entrada$p = 61$$q = 53$$e = 17$$M = 65$Resultados Intermedios y FinalesMódulo ($n$): $61 \times 53 = 3233$Totiente ($\phi(n)$): $(61 - 1) \times (53 - 1) = 60 \times 52 = 3120$Clave Privada ($d$): Inverso de $17 \pmod{3120} = 2753$Texto Cifrado ($C$): $65^{17} \pmod{3233} = 2790$Texto Descifrado ($M_{desc}$): $2790^{2753} \pmod{3233} = 65$Salida obtenida en consola:n=3233 phi=3120 d=2753 C=2790 M_desc=65
