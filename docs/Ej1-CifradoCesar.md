@@ -26,6 +26,10 @@ pequeño: solo existen 26 valores posibles de k (0 a 25). Un computador
 puede probarlos todos en milisegundos, así que basta con generar las 26
 versiones del mensaje y que una persona identifique cuál tiene sentido.
 
+Además, gracias a la periodicidad del módulo 26, la función funciona correctamente
+para cualquier valor entero de k (positivo, negativo, o mayor a 26), ya
+que k y k+26 (o k-26) siempre producen el mismo resultado.
+
 ## 3. ¿Cómo se ejecuta?
 Desde la carpeta `src/cripto/`:
 ```bash
