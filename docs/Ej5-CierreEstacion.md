@@ -17,7 +17,7 @@ ninguna ruta alternativa, el par se reporta como desconectado.
 ## 3. ¿Cómo se ejecuta?
 Desde la carpeta `src/grafos/`:
 ```bash
-python cierre_estacion.py
+python CierreEstacion.py
 ```
 Usa el grafo de ejemplo del ejercicio 4 y simula el cierre del vértice
 "Centro", mostrando una tabla con origen, destino, distancia antes,
