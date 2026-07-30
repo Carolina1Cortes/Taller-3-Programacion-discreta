@@ -1,8 +1,7 @@
 # Taller 3 - Programación Discreta
 
-Taller de la asignatura Matemáticas Discretas I (Universidad Nacional de
-Colombia), que aplica ideas del curso —criptografía, grafos, álgebra de
-Boole, teoría de la información y computación cuántica básica— en
+Taller de la asignatura Matemáticas Discretas I, que aplica ideas del curso (criptografía, grafos, álgebra de
+Boole, teoría de la información y computación cuántica básica) en
 programas pequeños y verificables.
 
 ## Integrantes
